@@ -6,6 +6,7 @@ class ToJson {
     static void main(String[] args) {
         jsonWithSingle()
         jsonWithMultiKey()
+        objectToJson()
     }
 
     private static void jsonWithSingle() {
@@ -35,5 +36,19 @@ class ToJson {
         println(builder.toPrettyString())
     }
 
+    private static void objectToJson() {
+        def user = new User(name: "Freewind", address: new Address(city: "XA", zipcode: "123456"))
+        def json = new JsonBuilder(user).toPrettyString()
+        println(json)
+    }
 }
 
+class User {
+    String name
+    Address address
+}
+
+class Address {
+    String city
+    String zipcode
+}
